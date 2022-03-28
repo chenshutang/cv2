@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tab选项卡</title>
+    <title>Collapse折叠面板</title>
     <style>
         .container {
             max-width: 800px;
@@ -15,93 +15,145 @@
             padding: 16px;
         }
 
-        .tabs .tab-header {
-            position: relative;
-            display: flex;
+        .collapse {
             font-size: 13px;
-            color: #303030;
-            line-height: 2;
-            font-weight: 500;
-            border-bottom: 2px solid #ddd;
         }
 
-        .tabs .tab-item {
-            margin-right: 30px;
+        .collapse .item {
+            border-top: 1px solid #ddd;
             cursor: pointer;
         }
 
-        .tabs .line {
-            position: absolute;
-            top: 100%;
-            transform: translateX(0);
-            width: 50px;
-            height: 2px;
-            background: #409eff;
+        .collapse .item:last-child {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .collapse .item-header {
+            display: flex;
+            align-items: center;
+            color: #303030;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .collapse .item-header::after {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-top: 1px solid #303030;
+            border-right: 1px solid #303030;
+            margin-left: auto;
+            transform: rotate(45deg);
             transition: all .3s;
         }
 
-        .tabs .tab-item.active {
-            color: #409eff;
+        .collapse .item.active .item-header::after {
+            transform: rotate(135deg)
         }
 
-        .tabs .tab-panel {
-            padding: 16px 0;
+        .collapse .item-content {
             font-size: 14px;
-            display: none;;
+            color: #666;
+            height: 0;
+            overflow: hidden;
+            transition: all .3s;
         }
 
-        .tabs .tab-panel.active {
-            display: block;
+        .collapse .item.active .item-content {
+            height: auto;
+            padding-bottom: 16px;
         }
-
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h2>Tab选项卡</h2>
-        <div class="tabs">
-            <div class="tab-header">
-                <span class="tab-item active">用户管理</span>
-                <span class="tab-item">配置管理</span>
-                <span class="tab-item">角色管理</span>
-                <span class="tab-item">定时任务补偿</span>
-                <span class="line"></span>
+        <h2>Collapse折叠面板</h2>
+        <div class="collapse">
+            <div class="item">
+                <div class="item-header">一致性Consistency</div>
+                <div class="item-content">
+                    与现实生活一致：与现实生活的流程，逻辑保持一致，遵循用户习惯的语言和概念；<br>在界面中一致：所有的元素和结构需保持一致，比如：设计样式，图表和文本，元素的位置等。
+                </div>
+            </div> 
+            <div class="item active">
+                <div class="item-header">反馈Feedback</div>
+                <div class="item-content">控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己<br>
+                    页面反馈：操作后，通过页面元素的变化清晰的展现当前状态。</div>
             </div>
-            <div class="tab-content">
-                <div class="tab-panel active">用户管理</div>
-                <div class="tab-panel">配置管理</div>
-                <div class="tab-panel">角色管理</div>
-                <div class="tab-panel">定时任务补偿</div>
+            <div class="item">
+                <div class="item-header">效率 Efficiencyy</div>
+                <div class="item-content">简化流程：设计简洁直观的操作流程；<br>
+                    清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；<br>
+                    帮助用户识别：界面简单直白，让用户快速识别并回忆；</div>
+            </div>
+            <div class="item">
+                <div class="item-header">可控 controllability</div>
+                <div class="item-content">用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；<br>
+                    结果可控：用户可以自由的进行操作，包括撤销，回退和终止当前操作等。</div>
             </div>
         </div>
     </div>
-    <script> 
+    </div>
 
-        const $ = s => document.querySelector(s)
-        const $$ = s => document.querySelectorAll(s)
+    <div class="container">
+        <h2>Collapse折叠面板</h2>
+        <div class="collapse">
+            <div class="item">
+                <div class="item-header">一致性Consistency</div>
+                <div class="item-content">
+                    与现实生活一致：与现实生活的流程，逻辑保持一致，遵循用户习惯的语言和概念；<br>在界面中一致：所有的元素和结构需保持一致，比如：设计样式，图表和文本，元素的位置等。
+                </div>
+            </div> 
+            <div class="item active">
+                <div class="item-header">反馈Feedback</div>
+                <div class="item-content">控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己<br>
+                    页面反馈：操作后，通过页面元素的变化清晰的展现当前状态。</div>
+            </div>
+            <div class="item">
+                <div class="item-header">效率 Efficiencyy</div>
+                <div class="item-content">简化流程：设计简洁直观的操作流程；<br>
+                    清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；<br>
+                    帮助用户识别：界面简单直白，让用户快速识别并回忆；</div>
+            </div>
+            <div class="item">
+                <div class="item-header">可控 controllability</div>
+                <div class="item-content">用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；<br>
+                    结果可控：用户可以自由的进行操作，包括撤销，回退和终止当前操作等。</div>
+            </div>
+        </div>
+    </div>
+    </div>
+                <script>
 
-        const $$tabItems = $$('.tabs .tab-item')
-        const $$tabPanels = $$('.tabs .tab-panel')
-        const $line = $('.tabs .line')
+                    class Collapse {
+                        constructor($container, type = 1) {
+                            this.$container = $container
+                            this.$$items = $container.querySelectorAll('.item')
+                            this.type = type
 
-        $line.style.width = $$tabItems[0].offsetWidth + 'px'
-       
-        $$tabItems.forEach($tab => {
-            $tab.onclick = function() {
-                $$tabItems.forEach($tab => $tab.classList.remove('active'))
-                this.classList.add('active')
+                            this.bind()
+                        }
+                        bind() {
+                            let self = this
+                            this.$$items.forEach($item => {
+                                $item.onclick = function () {
+                                    if (self.type === 2) {
+                                        this.classList.toggle('active')
+                                    } else if (self.type === 1) {
+                                        self.$$items.forEach($item => $item.classList.remove('active'))
+                                        this.classList.add('active')
+                                    }
+                                }
+                            })
+                        }
+                    }
 
-                console.log(this.offsetWidth)
-                console.log(this.offsetLeft)
-                $line.style.width = this.offsetWidth + 'px'
-                $line.style.transform = `translateX(${this.offsetLeft}px)`
+                    new Collapse(document.querySelectorAll('.collapse')[0])
+                    new Collapse(document.querySelectorAll('.collapse')[1], 2)
 
-                let index = [...$$tabItems].indexOf(this)
-                $$tabPanels.forEach($panel => $panel.classList.remove('active'))
-                $$tabPanels[index].classList.add('active')
-            }
-        })
-    </script>
+                </script>
 </body>
+
 </html>
